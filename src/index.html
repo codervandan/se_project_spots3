@@ -19,7 +19,14 @@
         </header>
         <main class="content">
             <section class="profile page__section">
-                <img src="./images/avatar.jpg" alt="User Avatar" class="profile__avatar">
+
+                <div class="profile__avatar-container">
+                    <img src="./images/avatar.jpg" alt="User Avatar" class="profile__avatar">
+
+                    <button type="button" class="profile__avatar-edit-btn" aria-label="Edit avatar"></button>
+                </div>
+
+                <!-- <img src="./images/avatar.jpg" alt="User Avatar" class="profile__avatar"> -->
                 <div class="profile__column">
                     <h1 class="profile__name">Bessie Coleman</h1>
                     <p class="profile__description">Civil Aviator</p>
@@ -35,21 +42,15 @@
                 <ul class="cards__list">
                     <template id="card-template">
                         <li class="card">
-                            <button
-                            type="button"
-                            class="card__delete-button"
-                            aria-label="Delete card">
+                            <button type="button" class="card__delete-button" aria-label="Delete card">
                             </button>
 
                             <img src="#" alt="" class="card__image">
 
                             <div class="card__footer">
-                            <h2 class="card__title"></h2>
-                            <button
-                            type="button"
-                            class="card__like-button"
-                            aria-label="Like card">
-                            </button>
+                                <h2 class="card__title"></h2>
+                                <button type="button" class="card__like-button" aria-label="Like card">
+                                </button>
                             </div>
                         </li>
                     </template>
@@ -111,32 +112,15 @@
                 <h2 class="modal__title">Edit Profile</h2>
                 <form class="modal__form" novalidate>
                     <label for="profile-name-input" class="modal__label"> Name
-                        <input 
-                        id="profile-name-input" 
-                        type="text" 
-                        class="modal__input" 
-                        placeholder="Type your name" 
-                        required minlength="2" 
-                        maxlength="40"
-                        >
-                        <span
-                        class="modal__error"
-                        id="profile-name-input-error"
-                        >
+                        <input id="profile-name-input" type="text" class="modal__input" placeholder="Type your name"
+                            required minlength="2" maxlength="40">
+                        <span class="modal__error" id="profile-name-input-error">
                         </span>
                     </label>
                     <label for="profile-description-input" class="modal__label"> Description
-                        <input 
-                        id="profile-description-input" 
-                        type="text" 
-                        class="modal__input"
-                        placeholder="Describe yourself" 
-                        required minlength="2" maxlength="200"
-                        >
-                        <span
-                        class="modal__error"
-                        id="profile-description-input-error"
-                        >
+                        <input id="profile-description-input" type="text" class="modal__input"
+                            placeholder="Describe yourself" required minlength="2" maxlength="200">
+                        <span class="modal__error" id="profile-description-input-error">
                         </span>
                     </label>
                     <button class="modal__submit-btn" type="submit">Save</button>
@@ -149,31 +133,15 @@
                 <h2 class="modal__title">New Post</h2>
                 <form class="modal__form" novalidate>
                     <label for="card-image-input" class="modal__label"> Image link
-                        <input 
-                        id="card-image-input" 
-                        type="url" 
-                        class="modal__input"
-                        placeholder="Paste a link to the picture" 
-                        required
-                        >
-                        <span
-                        class="modal__error"
-                        id="card-image-input-error"
-                        >
+                        <input id="card-image-input" type="url" class="modal__input"
+                            placeholder="Paste a link to the picture" required>
+                        <span class="modal__error" id="card-image-input-error">
                         </span>
                     </label>
                     <label for="card-caption-input" class="modal__label"> Caption
-                        <input 
-                        id="card-caption-input" 
-                        type="text" 
-                        class="modal__input" 
-                        placeholder="Type your caption"
-                        required minlength="2" maxlength="30"
-                        >
-                        <span
-                        class="modal__error"
-                        id="card-caption-input-error"
-                        >
+                        <input id="card-caption-input" type="text" class="modal__input" placeholder="Type your caption"
+                            required minlength="2" maxlength="30">
+                        <span class="modal__error" id="card-caption-input-error">
                         </span>
                     </label>
                     <button class="modal__submit-btn" type="submit">Save</button>
@@ -182,12 +150,12 @@
         </div>
     </div>
     <div class="modal modal_type_preview" id="preview-modal">
-            <div class="modal__image-container">
-                <button type="button" class="modal__close-btn modal__close_type_preview"></button>
-                <img class="modal__image" src="#" alt="">
-                <p class="modal__caption">Golden Gate Bridge</p>
-                <!-- Don't need the form  -->
-                <!-- <form class="modal__form">
+        <div class="modal__image-container">
+            <button type="button" class="modal__close-btn modal__close_type_preview"></button>
+            <img class="modal__image" src="#" alt="">
+            <p class="modal__caption">Golden Gate Bridge</p>
+            <!-- Don't need the form  -->
+            <!-- <form class="modal__form">
                     <label for="card-image-input" class="modal__label"> Image link
                         <input id="card-image-input" type="url" class="modal__input"
                             placeholder="Paste a link to the picture" required minlength="2" maxlength="40">
@@ -198,8 +166,57 @@
                     </label>
                     <button class="modal__submit-btn" type="submit">Save</button>
                 </form> -->
-            </div>
         </div>
+    </div>
+
+    <div class="modal" id="delete-card-modal">
+        <div class="modal__container">
+            <button type="button" class="modal__close-btn" aria-label="Close"></button>
+
+            <h2 class="modal__title">Are you sure?</h2>
+
+            <form class="modal__form" novalidate>
+                <button class="modal__submit-btn" type="submit">
+                    Delete
+                </button>
+            </form>
+        </div>
+    </div>
+
+<div class="modal" id="edit-avatar-modal">
+  <div class="modal__container">
+    <button
+      type="button"
+      class="modal__close-btn"
+      aria-label="Close"
+    ></button>
+
+    <h2 class="modal__title">Change profile picture</h2>
+
+    <form class="modal__form" novalidate>
+      <label for="avatar-url-input" class="modal__label">
+        Image link
+        <input
+          id="avatar-url-input"
+          type="url"
+          class="modal__input"
+          placeholder="Paste image URL"
+          required
+        >
+        <span
+          class="modal__error"
+          id="avatar-url-input-error"
+        ></span>
+      </label>
+
+      <button class="modal__submit-btn" type="submit">
+        Save
+      </button>
+    </form>
+  </div>
+</div>
+
+
     <!-- <script type="module" src="./scripts/index.js"></script> -->
 </body>
 

@@ -94,6 +94,8 @@ export function resetValidation(formElement, config) {
     config.submitButtonSelector
   );
 
+  if (!buttonElement) return;
+
   inputList.forEach((inputElement) => {
     hideInputError(formElement, inputElement, config);
   });
