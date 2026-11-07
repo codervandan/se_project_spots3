@@ -12,6 +12,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "scripts/[name].js",
     assetModuleFilename: "assets/[name][ext][query]",
+    publicPath: "./",
     clean: false,
   },
 
